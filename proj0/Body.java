@@ -1,3 +1,6 @@
+
+import javax.naming.spi.DirStateFactory;
+
 public class Body{
     public double xxPos;
     public double yyPos;
@@ -37,7 +40,24 @@ public double calcForceExertedByX(Body b){
 public double calcForceExertedByY(Body b){
     return (G*mass*b.mass/Math.pow(calcDistance(b),2))*(b.yyPos-yyPos)/calcDistance(b);
 } 
-
+public double calcNetForceExertedByX(Body[] allBodys){
+    double value = 0;
+    for(Body b : allBodys){
+        if (! b.equals(this)){ 
+           value += b.calcForceExertedByX(b);
+            }
+    }
+    return value;
+}
+public double calcNetForceExertedByY(Body[] allBodys){
+    double value = 0;
+    for(Body b : allBodys){
+        if (! b.equals(this)){ 
+           value += b.calcForceExertedByY(b);
+            }
+    }
+    return value;
+}
 
 
 }
