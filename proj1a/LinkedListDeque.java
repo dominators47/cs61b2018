@@ -75,4 +75,13 @@ public class LinkedListDeque<T> {
             return item;
         }
     }
+
+    public T get(int index){
+        Node p = sentinel.next;
+        while(index > 0){
+            p = p.next;
+            index -= 1;
+        }
+        return p.item;
+    }
 }
