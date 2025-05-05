@@ -94,4 +94,15 @@ public class LinkedListDeque<T> {
     public T getrecursive(int index){
         return getrecursivehelper(index, sentinel.next);
     }
+    public int size(){
+        return size;
+    }
+    public void printdeque(){
+        Node p = sentinel.next;
+        while (p != sentinel){
+            System.out.print(p.item);
+            System.out.print(' ');
+            p = p.next;
+        }
+    }
 }
