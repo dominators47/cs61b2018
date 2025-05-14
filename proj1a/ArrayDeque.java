@@ -1,6 +1,7 @@
 public class ArrayDeque<T> {
 
-    /** invariants:
+    /**
+     * invariants:
      * The index of the nextFirst is always first - 1.
      * The index of the nextLast is always last + 1.
      * The number of items in the ArrayDeque is always size.
@@ -13,14 +14,14 @@ public class ArrayDeque<T> {
     private int nextLast;
 
     public ArrayDeque() {
-        items = (T []) new Object[8];
+        items = (T[]) new Object[8];
         size = 0;
         nextFirst = 7;
         nextLast = 0;
     }
 
     private void biggerResize(int n) {
-        T[] a = (T []) new Object[n];
+        T[] a = (T[]) new Object[n];
         T[] copy = items;
         int last = minusOne(nextLast);
         int first = plusOne(nextFirst);
@@ -32,7 +33,7 @@ public class ArrayDeque<T> {
     }
 
     private void smallerResize(int n) {
-        T[] a = (T []) new Object[n];
+        T[] a = (T[]) new Object[n];
         T[] copy = items;
         int first = nextFirst + 1;
         if (nextFirst > nextLast) {
@@ -47,7 +48,6 @@ public class ArrayDeque<T> {
             nextFirst = 0;
         }
     }
-
 
 
     private T getlast() {
