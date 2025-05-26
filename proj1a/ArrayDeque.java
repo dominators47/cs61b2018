@@ -113,7 +113,7 @@ public class ArrayDeque<T> {
             size -= 1;
             usageRatio = (double) size / (double) items.length;
             if (items.length >= 16 && usageRatio < 0.25) {
-                Resize(size / 2);
+                Resize(items.length / 2);
             }
             return item;
         }
