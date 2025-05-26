@@ -29,11 +29,8 @@ public class ArrayDeque<T> {
     }
 
     public T get(int i) {
-        int index = plusOne(nextFirst) + i;
-        if (index >= items.length) {
-            index = index - items.length;
-        }
-        return items[index];
+
+        return items[(plusOne(nextFirst) + i)%items.length];
     }
 
     private int minusOne(int index) {
@@ -54,18 +51,8 @@ public class ArrayDeque<T> {
         }
     }
 
-    private void biggerResize(int n) {
-        T[] a = (T[]) new Object[n];
-        int last = minusOne(nextLast);
-        int first = plusOne(nextFirst);
-        System.arraycopy(items, 0, a, 0, plusOne(last));
-        System.arraycopy(items, first, a, first + n, n - first);
-        items = a;
-        nextFirst = minusOne(n - 1 - size / 2);
-    }
-
-    private void smallerResize(int n) {
-        T[] a = (T[]) new Object[n];
+    private void Resize(int n) {
+        T[] a = (T []) new Object[n];
         int first = plusOne(nextFirst);
         for (int i = 0; i < size; i++) {
             a[i] = items[(first + i) % items.length];
@@ -85,7 +72,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T x) {
         if (size == items.length) {
-            biggerResize(size * 2);
+            Resize(size * 2);
         }
         items[nextLast] = x;
         nextLast = plusOne(nextLast);
@@ -94,7 +81,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T x) {
         if (size == items.length) {
-            biggerResize(size * 2);
+            Resize(size * 2);
         }
         items[nextFirst] = x;
         nextFirst = minusOne(nextFirst);
@@ -115,7 +102,7 @@ public class ArrayDeque<T> {
             }
             usageRatio = (double) size / (double) items.length;
             if (items.length >= 16 && usageRatio < 0.25) {
-                smallerResize(items.length / 2);
+                Resize(items.length / 2);
             }
             return item;
         }
@@ -134,13 +121,13 @@ public class ArrayDeque<T> {
             }
             usageRatio = (double) size / (double) items.length;
             if (items.length >= 16 && usageRatio < 0.25) {
-                smallerResize(size / 2);
+                Resize(size / 2);
             }
             return item;
         }
     }
 
-    public void pirntDeque() {
+    public void printDeque() {
         for (int i = 0; i < size; i++) {
             T item = get(i);
             System.out.print(item);
