@@ -96,10 +96,6 @@ public class ArrayDeque<T> {
             T item = getLast();
             nextLast = minusOne(nextLast);
             size -= 1;
-            if (size == 0) {
-                nextFirst = 7;
-                nextLast = 0;
-            }
             usageRatio = (double) size / (double) items.length;
             if (items.length >= 16 && usageRatio < 0.25) {
                 Resize(items.length / 2);
@@ -115,10 +111,6 @@ public class ArrayDeque<T> {
             T item = getFirst();
             nextFirst = plusOne(nextFirst);
             size -= 1;
-            if (size == 0) {
-                nextFirst = 7;
-                nextLast = 0;
-            }
             usageRatio = (double) size / (double) items.length;
             if (items.length >= 16 && usageRatio < 0.25) {
                 Resize(size / 2);
