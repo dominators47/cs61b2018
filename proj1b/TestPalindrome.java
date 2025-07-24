@@ -1,4 +1,5 @@
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class TestPalindrome {
@@ -6,6 +7,7 @@ public class TestPalindrome {
     // new Palindromes, or the autograder might be upset.
     static Palindrome palindrome = new Palindrome();
     static CharacterComparator offByOne = new OffByOne();
+
     @Test
     public void testWordToDeque() {
         Deque d = palindrome.wordToDeque("persiflage");
@@ -17,7 +19,7 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIsPalindrome(){
+    public void testIsPalindrome() {
         assertTrue(palindrome.isPalindrome("cac"));
         assertTrue(palindrome.isPalindrome("caaaac"));
         assertTrue(palindrome.isPalindrome(""));
@@ -28,7 +30,7 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIsPalindromecc(){
+    public void testIsPalindromecc() {
         assertTrue(palindrome.isPalindrome("a", offByOne));
         assertFalse(palindrome.isPalindrome("bob", offByOne));
         assertTrue(palindrome.isPalindrome("flake", offByOne));

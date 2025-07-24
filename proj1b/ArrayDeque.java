@@ -33,7 +33,7 @@ public class ArrayDeque<T> implements Deque<T> {
     @Override
     public T get(int i) {
 
-        return items[(plusOne(nextFirst) + i)%items.length];
+        return items[(plusOne(nextFirst) + i) % items.length];
     }
 
     private int minusOne(int index) {
@@ -55,7 +55,7 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     private void Resize(int n) {
-        T[] a = (T []) new Object[n];
+        T[] a = (T[]) new Object[n];
         int first = plusOne(nextFirst);
         for (int i = 0; i < size; i++) {
             a[i] = items[(first + i) % items.length];
